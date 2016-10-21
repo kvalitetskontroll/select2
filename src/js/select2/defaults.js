@@ -307,7 +307,7 @@ define([
     }
 
     function matcher (params, data) {
-      data.parentText = data.parentText || "";
+      data.parentText = data.parentText || '';
 
       // Always return the object if there is nothing to compare
       if ($.trim(params.term) === '') {
@@ -323,7 +323,7 @@ define([
         // Check each child of the option
         for (var c = data.children.length - 1; c >= 0; c--) {
           var child = data.children[c];
-          child.parentText = data.parentText + " " + data.text;
+          child.parentText = data.parentText + ' ' + data.text;
 
           var matches = matcher(params, child);
 
@@ -342,17 +342,21 @@ define([
         return matcher(params, match);
       }
 
-      // If the typed-in term matches the text of this term, or the text from any
-      // parent term, then it's a match.
+      // If the typed-in term matches the text of this term, or the text from
+      // any parent term, then it's a match.
       var original = stripDiacritics(data.parentText + ' ' + data.text).toUpperCase();
-      var term = stripDiacritics(params.term).toUpperCase().split(" ");
+      var term = stripDiacritics(params.term).toUpperCase().split(' ');
 
       for(var i=0;i<term.length;i++)
       {
           if (original.indexOf(term[i]) == -1)
+          {
               return null;
+          }
           else
-              original = original.replace(term[i], "");
+          {
+              original = original.replace(term[i], '');
+          }
       }
 
       // If it doesn't contain the term, don't return anything
