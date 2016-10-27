@@ -3131,8 +3131,13 @@ S2.define('select2/data/select',[
 
     this.container = container;
 
+    this.$search =  container.dropdown.$search || container.selection.$search ||
+      $container.find('.select2-search__field');
+
     container.on('select', function (params) {
       self.select(params.data);
+      self.$search.val('').focus();
+      this.trigger('query', {});
     });
 
     container.on('unselect', function (params) {
