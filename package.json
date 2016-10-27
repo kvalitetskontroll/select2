@@ -1,23 +1,14 @@
 {
-  "name": "select2",
+  "name": "select2-kvalitetskontroll",
   "description": "Select2 is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results.",
-  "homepage": "https://select2.github.io",
+  "homepage": "https://github.com/kvalitetskontroll/select2-kvalitetskontroll",
   "author": {
-    "name": "Kevin Brown",
-    "url": "https://github.com/kevin-brown"
+    "name": "Roy Hansen",
+    "url": "https://hansenroy.com"
   },
-  "contributors": [
-    {
-      "name": "Igor Vaynberg",
-      "url": "https://github.com/ivaynberg"
-    }
-  ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/select2/select2.git"
-  },
-  "bugs": {
-    "url": "https://github.com/select2/select2/issues"
+    "url": "git://github.com/kvalitetskontroll/select2-kvalitetskontroll.git"
   },
   "keywords": [
     "select",
@@ -34,7 +25,7 @@
     "src",
     "dist"
   ],
-  "version": "4.0.3",
+  "version": "4.0.4",
   "jspm": {
     "main": "js/select2",
     "directories": {
