@@ -57,7 +57,7 @@ module.exports = function (grunt) {
     i18nPaths[name] = '../../' + name;
   }
 
-  var minifiedBanner = '/*! Select2 <%= package.version %> | https://github.com/select2/select2/blob/master/LICENSE.md */';
+  var minifiedBanner = '/*! Select2-kvalitetskontroll <%= package.version %> | https://github.com/kvalitetskontroll/select2-kvalitetskontroll/blob/master/LICENSE.md */';
 
   grunt.initConfig({
     package: grunt.file.readJSON('package.json'),
