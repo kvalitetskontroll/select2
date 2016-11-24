@@ -24,7 +24,50 @@ define([
       data.push(option);
     });
 
-    callback(data);
+    var newPosition = 0;
+    for(var i=0;i<data.length;i++) {
+        var p = data[i].selectPosition;
+        if(p === null || typeof p === 'undefined') {
+            data[i].selectPosition = null;
+            continue;
+        }
+
+        if(p < newPosition) {
+            continue;
+        }
+
+        newPosition = p + 1;
+    }
+
+    var rearrangeData = [];
+    for(var i=0;i<data.length;i++) {
+        var p = data[i].selectPosition;
+        if(p === null) {
+            data[i].selectPosition = newPosition++;
+            p = data[i].selectPosition;
+        }
+
+        var placeOk = null;
+
+        for(var ii=0;ii<rearrangeData.length;ii++) {
+            if(rearrangeData[ii].selectPosition > p) {
+                rearrangeData.splice(ii, 0, data[i]);
+                placeOk = 1;
+                break;
+            }
+        }
+
+        if(!placeOk) {
+            rearrangeData.push(data[i]);
+        }
+    }
+
+    if(callback) {
+        callback(rearrangeData);
+    }
+    else {
+        return rearrangeData;
+    }
   };
 
   SelectAdapter.prototype.select = function (data) {
@@ -75,6 +118,7 @@ define([
     }
 
     data.selected = false;
+    data.selectPosition = null;
 
     if ($(data.element).is('option')) {
       data.element.selected = false;
